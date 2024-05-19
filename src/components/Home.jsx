@@ -80,7 +80,7 @@ class Canvas {
         this.ctx.fillStyle = textColor;
         this.ctx.font = '30px Arial';
         const textX = x + width / 2 - this.ctx.measureText(text).width / 2;
-        const textY = y + height / 2 + 6; // Adjust 6 to vertically center the text
+        const textY = y + height / 2 + 6;
         this.ctx.fillText(text, textX, textY);
     }
 }
@@ -97,7 +97,7 @@ const Home = () => {
         },
         "cta": {
             "text": "Shop Now",
-            "position": { "x": 60, "y": 220 },
+            "position": { "x": 60, "y": 120 },
             "text_color": "#FFFFFF",
             "background_color": "#000000"
         },
@@ -113,12 +113,13 @@ const Home = () => {
             "design_pattern": "https://d273i1jagfl543.cloudfront.net/templates/global_temp_landscape_temp_10_Design_Pattern.png"
         }
     };
+    
     const [colorValue, setColorValue] = useState('#a3080c');
     const canvasRef = useRef(null);
     const [imageUrl, setImageUrl] = useState('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D');
     const [logoUrl, setlogoUrl] = useState('https://i.pinimg.com/474x/4f/18/1d/4f181d9add83431113fd12258ff3ffaa.jpg');
-    const [textdata, setText] = useState('1 & 2 BHK Luxury Apartments at just Rs.34.97 Lakhs')
-    const [cta, setcta] = useState('Shop Now')
+    const [textdata, setText] = useState(data.caption.text)
+    const [cta, setcta] = useState(data.cta.text)
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -157,7 +158,7 @@ const Home = () => {
         canvas.drawBackground(colorValue, 0, 0, 1080, 850);
         canvas.drawBorder(57, 557, 955, 523, 'white', 5);
         canvas.drawImage(imageUrl, 60, 560, 950, 510);
-        canvas.drawText(textdata, 60, 120, 40, '#FFFFFF', 'left', data.caption.max_characters_per_line);
+        canvas.drawText(textdata, data.cta.position.x, data.cta.position.y, 40, '#FFFFFF', 'left', data.caption.max_characters_per_line);
         canvas.drawButton(cta, 60, 220, 200, 80, 'black', 'white');
         canvas.drawBorder(675, 27, 310, 190, 'white', 5);
         canvas.drawlogo(logoUrl, 680, 30, 300, 180)
@@ -185,7 +186,6 @@ const Home = () => {
                     <Box>
                         <TextField value={cta} onChange={(e) => setcta(e.target.value)} fullWidth margin='normal' label="CTA" />
                     </Box>
-                    {/* <small>Choose your color</small> */}
                     <MuiColorInput label='Choose your color' margin='normal' format='hex' value={colorValue} onChange={handleColorChange}></MuiColorInput>
                     <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
                         {colors.map((item) => (
