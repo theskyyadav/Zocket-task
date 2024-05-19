@@ -166,9 +166,9 @@ const Home = () => {
     return (
         <Box sx={{ height: "100vh", display: "flex", width: "100%", }}>
             <Box sx={{ background: "#f0f0f0", width: "auto", display: "flex", alignItems: "center", justifyContent: "center", padding:4, }} >
-                <canvas ref={canvasRef} width={1080} height={1080} style={{ width: "650px", height: "650px" }}></canvas>
+                <canvas ref={canvasRef} width={1080} height={1080} style={{ width: "400px", height: "400px" }}></canvas>
             </Box>
-            <Box sx={{ width: "60%", display: "flex", alignItems: 'center', justifyContent: "center", padding:5, }} >
+            <Box sx={{ width: "60%", display: "flex", alignItems: 'center', justifyContent: "center", padding:10, }} >
                 <Box sx={{ width: "80%", display: "flex", justifyContent: "center", flexDirection: "column" }}>
                     <Typography variant='h4' textAlign={'center'}> <strong>Ad customization</strong> </Typography>
                     <Typography variant='paragraph' textAlign={'center'}>Customise your ad and get the templates accordingly</Typography>
