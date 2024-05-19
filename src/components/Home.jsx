@@ -161,7 +161,7 @@ const Home = () => {
         canvas.drawButton(cta, 60, 220, 200, 80, 'black', 'white');
         canvas.drawBorder(675, 27, 310, 190, 'white', 5);
         canvas.drawlogo(logoUrl, 680, 30, 300, 180)
-    }, [imageUrl, colorValue, textdata, cta,logoUrl]);
+    }, [imageUrl, colorValue, textdata, cta,logoUrl,data.caption.max_characters_per_line]);
 
     return (
         <Box sx={{ height: "100vh", display: "flex", width: "100%", }}>
